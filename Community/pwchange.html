@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 비밀번호 수정 </title>
+    <link rel="stylesheet" type="text/css" href="pwchange.css">
+</head>
+    <body>
+        <section class="wrap">
+            <article class="header">
+                <h1>아무 말 대잔치</h1>
+                <div class="profile"><img src="image.png" alt="프로필 이미지" class="profile"></div>
+            </article>
+            <hr class="horizontal-rule"/>
+
+            <form action="/pwchange.html" method="get">
+                <h1>비밀번호 수정</h1>
+                <div class="pwchange-wrap">
+                    <div class="form">
+                        <h3>비밀번호</h3>
+                        <input type="password" name="password" id="password" placeholder="Password">
+                        <a class="text">
+                            <p class="small" id="small"> * helper text </p>    
+                        </a>
+                        <h3>비밀번호 확인</h3>
+                        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Password">
+                        <a class="text">
+                            <p class="small" id="small"> * helper text </p>    
+                        </a>
+                    </div>
+                    <button onclick="toast('수정 완료')" id="button">수정하기</button>
+                    <div id="toast"></div>
+                </div>
+                <script src="pwchange.js"></script>
+            </form>
+        </section>
+    </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="posting.css">
+    <title> 게시글 작성 </title>
+</head>
+    <body>
+        <section class="wrap">
+            <article class="header">
+                <h1>아무 말 대잔치</h1>
+            </article>
+            <hr class="horizontal-rule"/>
+
+            <h1><b>게시글 작성</b></h1>
+
+        <form action="/posting.html" method="get">
+        <div class="container">
+            <article class="title">
+                <p><b>제목*</b></p>
+                <textarea cols="50" id="posttitle" name="title" maxlength="26" required>제목을 입력해주세요. (최대 26글자)</textarea>
+            </article>
+            <div class="detail">
+                <p><b>내용*</b></p>
+                <textarea cols="50" rows="20" id="content" name="content" required>무엇을 얘기할까요? 아무말이라면, 삶은 항상 놀라운 모험이라고 생각합니다. 우리는 매일 새로운 경험을 하고 배우며 성장합니다. 때로는 어려움과 도전이 있지만, 그것들이 우리를 더 강하고 지혜롭게 만듭니다. 또한 우리는 주변의 사람들과 연결되며 사랑과 지지를 받습니다. 그래서 우리의 삶은 소중하고 의미가 있습니다.
+자연도 아름다운 이야기입니다. 우리 주변의 자연은 끝없는 아름다움과 신비로움을 담고 있습니다. 산, 바다, 숲, 하늘 등 모든 것이 우리를 놀라게 만들고 감동시킵니다. 자연은 우리의 생명과 안정을 지키며 우리에게 힘을 주는 곳입니다.
+마지막으로, 지식을 향한 탐구는 항상 흥미로운 여정입니다. 우리는 끝없는 지식의 바다에서 배우고 발견할 수 있으며, 이것이 우리를 더 깊이 이해하고 세상을 더 넓게 보게 해줍니다.
+그런 의미에서, 삶은 놀라움과 경이로움으로 가득 차 있습니다. 새로운 경험을 즐기고 항상 앞으로 나아가는 것이 중요하다고 생각합니다.</textarea>
+                </div>
+
+            <a class="text">
+                <p class="small"> * helper text </p>
+            </a>
+
+            <div class="imageup">
+                <p><b>이미지</b></p>
+                <form method="post" enctype="multipart/form-data">
+                    <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
+                    <img id="output" src="#" alt="이미지 미리보기" style="display: none;">
+                </form>
+            </div>
+        </div>
+            <button type="submit" id="button"><a href="detail.html">완료</a></button>      
+        </form>
+        </section>
+        <script src="posting.js"></script> 
+    </body>
+</html>

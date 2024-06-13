@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="create.css">
+    <title> 회원가입 </title>
+    </head>
+    <body>
+        <section class="wrap">
+            <article class="header">
+                <h1>아무 말 대잔치</h1>
+            </article>
+            <hr class="horizontal-rule"/>
+            
+        <form id="signupForm" action="/create" method="post">
+            <h1>회원가입</h1>
+        <div class="pt">
+            <p><b>프로필 사진</b></p>
+            <small style="color:red;" id="small">*helper text</small>
+
+            <div class="photo">
+                <label for="chooseFile">
+                    <img id="previewImage" src="photo.png" alt="이미지 미리보기">
+                    <input type="file" id="chooseFile" accept="image/*" onchange="loadFile(this)" style="display: none;">
+                </label>
+            </div>
+            
+            <div class="form">
+                <p>이메일</p>
+                <input type="text" name="email" id = "email" placeholder="이메일을 입력하세요"><br>
+                <small style="color:red;" id="emailHelperText">*helper text</small>
+
+                <p>비밀번호</p>
+                <input type="password" name="password" id = "password" placeholder="비밀번호를 입력하세요"><br>
+                <small style="color:red;" id="passwordHelperText">*helper text</small>
+
+                <p>비밀번호 확인</p>
+                <input type="password" name="confirmPassword" id = "confirmPassword" placeholder="비밀번호를 한번 더 입력하세요"><br>
+                <small style="color:red;" id="confirmPasswordHelperText">*helper text</small>
+
+                <p>닉네임</p>
+                <input type="text" name="nickName" id="nickName" placeholder="닉네임을 입력하세요"><br>
+                <small style="color:red;" id="nickNameHelperText">*helper text</small>
+            </div>
+
+        </div>
+            <button type="submit" id="button1">회원가입</a></button>
+            <button type="submit" id="button2" onclick="location.href='login.html'"></a>로그인하러 가기</a></button>
+        </form>
+        <script src="/create.js"></script>  
+        </section>
+    </body>
+</html>
