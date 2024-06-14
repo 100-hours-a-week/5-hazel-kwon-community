@@ -13,17 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
   
-            let chooseFileBase64 = null;
-            if (chooseFile) {
-                chooseFileBase64 = await toBase64(chooseFile);
-            }
-  
             const post = {
                 posttitle: posttitle,
                 content: content,
                 nickName: "kakao", // 작성자 정보를 필요에 따라 수정하세요.
                 datetime: new Date().toISOString(),
-                chooseFile: chooseFileBase64
+                chooseFile: chooseFile ? URL.createObjectURL(chooseFile) : null
             };
   
             fetch(`http://localhost:3000/posts`, {
@@ -52,11 +47,4 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         console.error('Submit button not found');
     }
-});
-
-const toBase64 = file => new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = error => reject(error);
 });
