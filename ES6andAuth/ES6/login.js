@@ -52,7 +52,7 @@ passwordInput.addEventListener('change', () => {
 function changeButtonColor() {
   const button = document.getElementById('button1');
   const emailValid = validateEmail(emailInput.value.trim());
-  const passwordValid = passwordcheck(passwordInput.value.trim(), confirmPasswordInput.value.trim());
+  const passwordValid = passwordcheck(passwordInput.value.trim());
   if (emailValid && passwordValid) {
         button.style.backgroundColor = '#7f6aee'; //유효O
     } else {

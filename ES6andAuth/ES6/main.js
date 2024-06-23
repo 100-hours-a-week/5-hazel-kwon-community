@@ -55,6 +55,42 @@ document.addEventListener('DOMContentLoaded', async () => {
     fetchPosts();
 });
 
+
+// 회원정보 수정
+document.getElementById('update').addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = '/update';
+});
+
+// 비밀번호 수정
+document.getElementById('pwchange').addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = '/pwchange';
+});
+
+// 로그아웃
+document.getElementById('logout').addEventListener('click', async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:3000/logout', {
+        method: 'GET',
+        credentials: 'include'
+      });
+      const data = await response.json();
+      console.log('Logout response:', data);  // Debug log
+      if (data.status === 200) {
+        alert('로그아웃 되었습니다.');
+        window.location.href = '/login';
+      } else {
+        alert('로그아웃 중 문제가 발생했습니다.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('서버에 연결할 수 없습니다.');
+    }
+  });
+
+// 무한 스크롤
 window.addEventListener('scroll', () => {
     const scrollHeight = window.innerHeight + window.scrollY;
     const documentHeight = document.body.offsetHeight;
