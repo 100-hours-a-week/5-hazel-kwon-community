@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="detail.css">
+    <title> 게시글 상세조회 </title>
+</head>
+<body>
+    <section class="wrap">
+        <article class="header">
+            <h1>아무 말 대잔치</h1>
+            <div class="dropdown">
+                <button class="dropbtn"> 
+                    <img src="image.png" alt="프로필 이미지" class="profile">
+                </button>
+                <div class="dropdown-content">
+                    <a id="update" href="#">회원정보수정</a>
+                    <a id="pwchange" href="#">비밀번호수정</a>
+                    <a id="logout" href="#">로그아웃</a>
+                </div>
+            </div>
+        </article>
+        <hr class="horizontal-rule"/>
+
+        <article class="post">
+            <div class="postdetail">
+                <h1 id="posttitle">제목</h1>
+                <img id="photo" src="circle.png" width="36px" height="36px" name="photo" alt="프로필 이미지">
+                <small id="nickName">작성자
+                    <div class="datetime">
+                        <small id="datetime">작성일</small>
+                    </div>
+                </small>
+
+                <div class="controlBtns">
+                    <button type="submit" id="postdelete">삭제</button>
+                    <div class="po_modal">
+                        <div class="modal_popup">
+                            <h3 style="text-align: center;">게시글을 삭제하시겠습니까?</h3>
+                            <p>삭제한 내용은 복구할 수 없습니다.</p>
+                            <div class="mobt">
+                                <button type="button" class="close_btn">취소</button>
+                                <button type="button" class="yes_btn">확인</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" id="postmodify"><a href="postupdate.html">수정</a></button>
+                </div>
+            </div>
+
+            <div class="contents">
+                <img id="image" src="" alt="게시글 이미지" style="display: none;">
+                <p id="content">게시글 내용</p>
+            </div>
+
+            <div class="container">
+                <div id="items">조회수<br>123</div>
+                <div id="items">댓글<br>123</div>
+            </div>
+
+            <div class="card-footer">
+                <textarea id="comment" rows="10" cols="50" spellcheck="false" data-ms-editor="true">댓글을 남겨주세요!</textarea>
+                <button type="submit" id="button1">댓글 등록</button>
+
+                <div class="communicateList">
+                    <!-- 댓글이 동적으로 추가되는 부분 -->
+                </div>
+            </div>
+        </article>
+        <script src="detail.js"></script>
+    </section>
+</body>
+</html>
