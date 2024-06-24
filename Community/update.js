@@ -1,4 +1,4 @@
-const email = "email@email.com"; // 이 부분을 실제 로그인된 사용자의 이메일로 설정해야 합니다.
+const email = "test2@email.com"; // 이 부분을 실제 로그인된 사용자의 이메일로 설정해야 합니다.
 
 fetch(`http://localhost:3000/users/${email}`)
     .then(response => {
@@ -39,8 +39,8 @@ document.getElementById('updateForm').addEventListener('submit', function(e) {
         chooseFile: chooseFile ? chooseFile.name : null
     };
 
-    fetch(`http://localhost:3000/users`, {
-        method: "PATCH",
+    fetch('http://localhost:3000/users', {
+        method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -65,39 +65,40 @@ document.getElementById('updateForm').addEventListener('submit', function(e) {
     });
 });
 
-// 프로필 사진 유효성 검사
-const loadFile = input => {
+function loadFile(input) {
     const file = input.files[0];
     const reader = new FileReader();
 
-    reader.onload = event => {
+    reader.onload = function(event) {
         const previewImage = document.getElementById('previewImage');
         previewImage.src = event.target.result;
         previewImage.style.objectFit = "contain";
         previewImage.style.borderRadius = "70%";
     };
     reader.readAsDataURL(file);
-};
+}
 
-// 닉네임 유효성 검사
-const nickNamecheck = nickName => {
-    if (!nickName) {
+// 닉네임 입력 검사
+function nickNamecheck(nickName) {
+    if (nickName == null || nickName === "") {
         alert("*닉네임 입력은 필수입니다.");
         return false;
-    }
-    if (/\s/.test(nickName)) {
+    } 
+    if (nickName.search(/\s/) !== -1) {
         alert("*띄어쓰기를 없애주세요");
         return false;
-    }
+    } 
     if (nickName.length < 2 || nickName.length > 10) {
         alert("*닉네임은 최대 10자까지 작성 가능합니다.");
         return false;
-    }
+    } 
     return true;
-};
+}
 
 // 닉네임 중복 검사
-const duplicateNickName = (users, nickName) => users.every(user => user.nickName !== nickName);
+function duplicateNickName(users, nickName) {
+    return users.every(user => user.nickName !== nickName);
+}
 
 // 회원 탈퇴 모달 창 열기
 const modal = document.querySelector('.modal');
@@ -138,54 +139,16 @@ mdClose.addEventListener('click', async function () {
 });
 
 // 수정 완료 토스트 메시지 표시
-const toast = message => {
-    const toastElement = document.getElementById("toast");
+function toast(string) {
+    const toast = document.getElementById("toast");
 
-    if (toastElement.classList.contains("reveal")) {
-        clearTimeout(removeToast);
-        removeToast = setTimeout(() => {
-            toastElement.classList.remove("reveal");
-        }, 1000);
-    } else {
-        removeToast = setTimeout(() => {
-            toastElement.classList.remove("reveal");
-        }, 1000);
-    }
-    toastElement.classList.add("reveal");
-    toastElement.innerText = message;
-};
-
-
-// 회원정보 수정
-document.getElementById('update').addEventListener('click', (e) => {
-    e.preventDefault();
-    window.location.href = '/update';
-});
-
-// 비밀번호 수정
-document.getElementById('pwchange').addEventListener('click', (e) => {
-    e.preventDefault();
-    window.location.href = '/pwchange';
-});
-
-// 로그아웃
-document.getElementById('logout').addEventListener('click', async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch('http://localhost:3000/logout', {
-        method: 'GET',
-        credentials: 'include'
-      });
-      const data = await response.json();
-      console.log('Logout response:', data);  // Debug log
-      if (data.status === 200) {
-        alert('로그아웃 되었습니다.');
-        window.location.href = '/login';
-      } else {
-        alert('로그아웃 중 문제가 발생했습니다.');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      alert('서버에 연결할 수 없습니다.');
-    }
-  });
+    toast.classList.contains("reveal") ?
+        (clearTimeout(removeToast), removeToast = setTimeout(function () {
+            document.getElementById("toast").classList.remove("reveal")
+        }, 1000)) :
+        removeToast = setTimeout(function () {
+            document.getElementById("toast").classList.remove("reveal")
+        }, 1000)
+    toast.classList.add("reveal"),
+        toast.innerText = string
+}
